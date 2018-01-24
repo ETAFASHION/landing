@@ -1,0 +1,111 @@
+body
+	background-color: #EDF1F1
+
+#influencers
+	height: 100vh
+	position: relative
+	*		
+		color: black !important
+	.up
+		position: absolute
+		opacity: 0.5
+		z-index: -1
+	.down
+		position: absolute
+		bottom: 0
+		right: 0
+		opacity: 0.5	
+		z-index: -1
+	.logo_menu		
+		@media screen and (min-width: $break-large)
+			/*Estilos para desktop*/
+			padding-top: 2%		
+		@media screen and (max-width: $break-large)
+			/*Estilos para dispositivos moviles*/
+			height: 180px
+		.logo			
+			@media screen and (max-width: $break-large)
+				/*Estilos para dispositivos moviles*/			
+				float: none
+				width: 100%			
+			@media screen and (min-width: $break-large)
+				/*Estilos para desktop*/
+				float: right
+				width: 80%
+		.content-menu
+			position: relative
+			.menu
+				position: absolute			
+			.menu-items								
+				position: absolute								
+				@media screen and (min-width: $break-large)
+					/*Estilos para desktop*/
+					font-size: 1.6em
+					top: 8vh
+					left: 17%				
+				@media screen and (max-width: $break-large)
+					/*Estilos para dispositivos moviles*/
+					font-size: 1.8em
+					top: 6vh
+					left: 20%
+	#home
+		.title
+			font-weight: bold
+			font-family: 'Amatic SC', cursive
+		.video-container
+			position: relative
+			background-image: url("/images/influencers/marco.png")
+			background-repeat: no-repeat
+			background-size: cover
+			cursor: pointer
+			.video
+				position: absolute
+				width: 90%
+				height: 80%
+				z-index: -1
+				left: 6%
+				top: 10%
+		.picker
+			font-size: 1.7em
+			.picker__table
+				font-size: 1.7rem
+		.chips
+			input::placeholder
+				color: black
+		.enviar-content
+			position: relative
+			.link-enviar
+				position: absolute
+				font-size: 2em
+				cursor: pointer
+				@media screen and (min-width: $break-large)
+					/*Estilos para desktop*/
+					top: 4vh
+					left: 22%
+				@media screen and (max-width: $break-large)
+					/*Estilos para dispositivos moviles*/
+					top: 3vh
+					left: 38%
+			.fondo-enviar
+				position: absolute
+		.input-field
+			font-family: 'Amatic SC', cursive
+			label
+				font-size: 1.5em
+			input
+				font-size: 1.5em
+				&::placeholder
+					font-size: 0.6em
+	.girar
+		font-family: 'Amatic SC', cursive
+		&:hover
+			-ms-transform: rotate(-10deg)
+			-webkit-transform: rotate(-10deg)
+			transform: rotate(-10deg)
+			font-weight: bold
+	.router-link-active
+		font-family: 'Amatic SC', cursive
+		-ms-transform: rotate(-10deg)
+		-webkit-transform: rotate(-10deg)
+		transform: rotate(-10deg)
+		font-weight: bold
