@@ -55,6 +55,10 @@
 						</div>												
 					</div>
 					<div class="row">
+						<div class="terminos col s12">
+							<input type="checkbox" id="acepta" v-model="acepta"/>
+							<label for="acepta">Acepto términos y condiciones</label>
+						</div>
 						<div class="col s12">
 							<div class="enviar-content">
 								<img class="fondo-enviar" src="/images/influencers/fondo_enviar.png">
@@ -83,6 +87,7 @@
 			return {
 				player: null,
 				play: true,
+				acepta: false,
 				form: {
 					nombres: '',
 					apellidos: '',
@@ -115,26 +120,30 @@
 				}
 			},
 			enviar: function(){
-				if(this.validate()){					
-					let chips = $('.chips-placeholder').material_chip('data');
-					this.form.redes = chips;
-					let url = '/api/contactos';
-					console.log(JSON.stringify(this.form));
-					axios.post(url,this.form)
-					.then((response) => {			
-						console.log(response);
-						Materialize.toast('Información registrada exitosamente', 6000);					
-					})
-					.catch((error) => {
-						/*Hubo un error*/
-						if(error.response.status == 422){
-							Materialize.toast('Uno o más datos son invalidos, por favor verifique la información ingresada', 6000);
-						}else{
-							Materialize.toast('Hubo un error al intentar guardar la información', 6000);	
-						}
-					});
+				if(this.acepta){
+					if(this.validate()){					
+						let chips = $('.chips-placeholder').material_chip('data');
+						this.form.redes = chips;
+						let url = '/api/contactos';
+						console.log(JSON.stringify(this.form));
+						axios.post(url,this.form)
+						.then((response) => {			
+							console.log(response);
+							Materialize.toast('Información registrada exitosamente', 6000);					
+						})
+						.catch((error) => {
+							/*Hubo un error*/
+							if(error.response.status == 422){
+								Materialize.toast('Uno o más datos son invalidos, por favor verifique la información ingresada', 6000);
+							}else{
+								Materialize.toast('Hubo un error al intentar guardar la información', 6000);	
+							}
+						});
+					}else{
+						Materialize.toast('Por favor llenar todos los campos requeridos', 6000);
+					}
 				}else{
-					Materialize.toast('Por favor llenar todos los campos requeridos', 6000);
+					Materialize.toast('Debes aceptar los terminos y condiciones para poder registrarte', 6000);
 				}
 				
 			},

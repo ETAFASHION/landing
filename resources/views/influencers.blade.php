@@ -45,9 +45,8 @@
 				<i class="large material-icons">people</i>
 			</a>
 			<ul>
-				<li><a class="btn-floating blue lighten-5"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-				<li><a class="btn-floating blue lighten-5"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-				<li><a class="btn-floating blue lighten-5"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+				<li><a class="btn-floating blue lighten-5" href="https://www.facebook.com/ETAFASHIONECUADOR/" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+				<li><a class="btn-floating blue lighten-5" href="https://www.instagram.com/etafashion_ec/?hl=es" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 			</ul>
 		</div>
 	</div>	
