@@ -53,16 +53,18 @@ body
 			font-weight: bold
 			font-family: 'Amatic SC', cursive
 		.video-container
-			position: relative
-			background-image: url("/images/influencers/marco.png")
-			background-repeat: no-repeat
-			background-size: cover
-			cursor: pointer
+			@media screen and (min-width: $break-large)
+				position: relative
+				background-image: url("/images/influencers/marco.png")
+				background-repeat: no-repeat
+				background-size: cover
+				cursor: pointer
 			.video
 				position: absolute
 				width: 90%
 				height: 80%
-				z-index: -1
+				@media screen and (min-width: $break-large)
+					z-index: -1
 				left: 6%
 				top: 10%
 		.picker

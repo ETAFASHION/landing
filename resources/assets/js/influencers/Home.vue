@@ -3,10 +3,12 @@
 		<div class="row">
 			<div class="col s12 center-align"><h4 class="title">¿QUIERES SER UNO DE NUESTROS INFLUENCERS?</h4></div>
 			<div class="col s12 m6 center-align">				
-				<div class="video-container" @click="togglePlay">
-					<div class="video" id="video"></div>
-				</div>	
-				<a style="font-size: 1.5em; cursor: pointer;" @click="togglePlay" class="girar">PLAY / PAUSE</a>		
+				<div class="video-container" @click="togglePlay">					
+					<!--<div class="video" id="video"></div>-->
+					<iframe class="video" id="video" src="https://www.youtube.com/embed/yTZJqlH_VL0?rel=0&controls=0&showinfo=0&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</div>					
+				<!--<a style="font-size: 1.5em; cursor: pointer;" @click="togglePlay" class="girar hide-on-med-and-down">PLAY / PAUSE</a>-->	
+
 			</div>
 			<div class="col s12 m6">
 				<form class="col s12 formulario">
@@ -28,8 +30,8 @@
 							<label for="movil">Telefono movil *</label>
 						</div>
 						<div class="input-field col s6">
-							<input name="fecha_nacimiento" type="date" class="validate" v-model="form.fecha_nacimiento" placeholder="dd/mm/yyyy">
-							<label for="fecha_nacimiento" class="active">Fecha nacimiento *</label>
+							<input name="edad" type="number" class="validate" min="18" step="1" v-model="form.edad">
+							<label for="edad">Edad *</label>
 						</div>
 						<material-select class="col s6" name="ciudad" :list="{'Quito':'Quito','Guayaquil':'Guayaquil','Cuenca':'Cuenca','Ibarra':'Ibarra','Machala':'Machala','Ambato':'Ambato','Manta':'Manta'}" :value.sync="form.ciudad" :label="'Ciudad *'" :errors="''" :first-item="'...'"></material-select>
 						<div class="input-field col s12 m4">
@@ -89,7 +91,7 @@
 					apellidos: '',
 					email: '',
 					movil: '',
-					fecha_nacimiento: '',
+					edad: '',
 					ciudad: '',
 					video: '',
 					redes: {
@@ -132,8 +134,6 @@
 								Materialize.toast('Hubo un error al intentar guardar la información', 6000);	
 							}
 						});
-					}else{
-						Materialize.toast('Por favor llenar todos los campos requeridos', 6000);
 					}
 				}else{
 					Materialize.toast('Debes aceptar los terminos y condiciones para poder registrarte', 6000);
@@ -141,29 +141,54 @@
 				
 			},
 			validate: function(){
-				console.log(this.form);
+				let requeridos = false;
+				let mensaje_requeridos = 'Los siguientes campos son requeridos: ';
+				let erroneos = false;
+				let mensaje_erroneos = 'Los siguientes campos no son validos: ';
 				if(this.form.nombres == ''){
-					return false;
+					requeridos = true;
+					mensaje_requeridos += ' nombres,'
 				}
 				if(this.form.apellidos == ''){
-					return false;
+					requeridos = true;
+					mensaje_requeridos += ' apellidos,'
 				}
 				if(this.form.email == ''){
-					return false;
+					requeridos = true;
+					mensaje_requeridos += ' email,'
 				}
 				if(this.form.movil == ''){
-					return false;
+					requeridos = true;
+					mensaje_requeridos += ' movil,'
 				}
-				if(this.form.fecha_nacimiento == ''){
-					return false;
+				if(this.form.edad == '' || this.form.edad<18){					
+					if(this.form.edad==''){
+						requeridos = true;
+						mensaje_requeridos += ' edad,'
+					}else{
+						erroneos = true;
+						mensaje_erroneos += ' edad minimo 18 años,'
+					}
 				}
 				if(this.form.ciudad == ''){
-					return false;
+					requeridos = true;
+					mensaje_requeridos += ' ciudad,'
 				}
 				if(this.form.video == ''){
+					requeridos = true;
+					mensaje_requeridos += ' link video,'
+				}
+				if(!requeridos && !erroneos){
+					return true;
+				}else{
+					if(requeridos){
+						Materialize.toast(mensaje_requeridos, 6000);
+					}
+					if(erroneos){
+						Materialize.toast(mensaje_erroneos, 6000);
+					}
 					return false;
 				}
-				return true;
 			},	
 			initFields: function(){				
 				$('.datepicker').pickadate({
