@@ -7,6 +7,7 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Influencers</title>
+	<link rel="icon" href="https://cdn.etafashion.com/skin/frontend/base/default/favicon.ico" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{{mix('css/influencers.css')}}">
