@@ -31,19 +31,7 @@
 							<input name="fecha_nacimiento" type="date" class="validate" v-model="form.fecha_nacimiento" placeholder="dd/mm/yyyy">
 							<label for="fecha_nacimiento" class="active">Fecha nacimiento *</label>
 						</div>
-						<div class="input-field col s6">
-							<select name="ciudad" class="validate" v-model="form.ciudad">
-								<option value="" disabled selected>...</option>
-								<option value="Quito">Quito</option>
-								<option value="Guayaquil">Guayaquil</option>
-								<option value="Cuenca">Cuenca</option>
-								<option value="Ibarra">Ibarra</option>
-								<option value="Machala">Machala</option>
-								<option value="Ambato">Ambato</option>
-								<option value="Manta">Manta</option>
-							</select>
-							<label for="ciudad">Ciudad *</label>
-						</div>
+						<material-select class="col s6" name="ciudad" :list="{'Quito':'Quito','Guayaquil':'Guayaquil','Cuenca':'Cuenca','Ibarra':'Ibarra','Machala':'Machala','Ambato':'Ambato','Manta':'Manta'}" :value.sync="form.ciudad" :label="'Ciudad *'" :errors="''" :first-item="'...'"></material-select>
 						<div class="input-field col s12 m4">
 							<input name="video" type="text" class="validate" v-model="form.video">
 							<label for="video">Link video de youtube *</label>
@@ -84,6 +72,11 @@
 </style>
 
 <script>	
+
+	import material_select from '../components/generics/MaterialSelect.vue';
+	import Vue from 'vue';
+
+	Vue.component('material-select', material_select);
 
 	export default {
 		data: function(){
