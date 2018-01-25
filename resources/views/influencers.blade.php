@@ -14,6 +14,17 @@
 	<script src="https://www.youtube.com/iframe_api"></script>
 	<script type="text/javascript">
 		window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
+		var player;
+		function onYouTubeIframeAPIReady(){
+			player = new YT.Player('video', {
+				videoId: 'yTZJqlH_VL0',
+				events: {
+					'onReady': function(event){
+						event.target.playVideo();
+					}
+				}
+			});
+		}
 	</script>
 </head>
 <body>

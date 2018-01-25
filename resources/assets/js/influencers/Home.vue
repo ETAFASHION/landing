@@ -4,7 +4,8 @@
 			<div class="col s12 center-align"><h4 class="title">¿QUIERES SER UNO DE NUESTROS INFLUENCERS?</h4></div>
 			<div class="col s12 m6 center-align">				
 				<div class="video-container" @click="togglePlay">
-					<iframe class="video" id="video" src="https://www.youtube.com/embed/yTZJqlH_VL0?rel=0&enablejsapi=1&html5=1&autoplay=1&controls=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					<div class="video" id="video"></div>
+					<!--<iframe class="video" id="video" src="https://www.youtube.com/embed/yTZJqlH_VL0?rel=0&enablejsapi=1&html5=1&autoplay=1&controls=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
 				</div>	
 				<a v-if="play" style="font-size: 1.5em; cursor: pointer;" @click="togglePlay" class="girar">PAUSE</a>		
 				<a v-else style="font-size: 1.5em; cursor: pointer;" @click="togglePlay" class="girar">PLAY</a>	
@@ -101,15 +102,12 @@
 			}
 		},
 		methods: {
-			onPlayerReady: function(event){
-				event.target.playVideo();
-			},
 			playVideo: function(){
-				this.player.playVideo();
+				player.playVideo();
 				this.play = true;
 			},
 			pauseVideo: function(){
-				this.player.pauseVideo();
+				player.pauseVideo();
 				this.play = false;
 			},
 			togglePlay: function(){
@@ -170,10 +168,15 @@
 					return false;
 				}
 				return true;
-			}
+			},			
 		},
-		mounted: function(){			
-			this.player = new YT.Player('video');
+		created: function(){
+			var tag = document.createElement('script');
+			tag.src = "https://www.youtube.com/iframe_api";
+			var firstScriptTag = document.getElementsByTagName('script')[0];
+			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		},
+		mounted: function(){					
 			$('.datepicker').pickadate({
 				selectMonths: true, 
 				selectYears: 15, 
