@@ -14,10 +14,21 @@
 	<script src="https://www.youtube.com/iframe_api"></script>
 	<script type="text/javascript">
 		window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 		var player;
 		function onYouTubeIframeAPIReady(){
 			player = new YT.Player('video', {
 				videoId: 'yTZJqlH_VL0',
+				playerVars: {
+					controls:0,
+					autoplay:1,
+					rel:0,
+					showinfo:0
+
+				},
 				events: {
 					'onReady': function(event){
 						event.target.playVideo();

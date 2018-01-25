@@ -168,28 +168,28 @@
 					return false;
 				}
 				return true;
-			},			
-		},
-		created: function(){
-			var tag = document.createElement('script');
-			tag.src = "https://www.youtube.com/iframe_api";
-			var firstScriptTag = document.getElementsByTagName('script')[0];
-			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			},	
+			initFields: function(){
+				$('.datepicker').pickadate({
+					selectMonths: true, 
+					selectYears: 15, 
+					today: 'Today',
+					clear: 'Clear',
+					close: 'Ok',
+					closeOnSelect: false 
+				});
+				$('.chips-placeholder').material_chip({
+					placeholder: 'Perfil de Facebook',
+					secondaryPlaceholder: 'Perfil de Instagram',
+				});
+				$('select').material_select();
+			}		
 		},
 		mounted: function(){					
-			$('.datepicker').pickadate({
-				selectMonths: true, 
-				selectYears: 15, 
-				today: 'Today',
-				clear: 'Clear',
-				close: 'Ok',
-				closeOnSelect: false 
-			});
-			$('.chips-placeholder').material_chip({
-				placeholder: 'Perfil de Facebook',
-				secondaryPlaceholder: 'Perfil de Instagram',
-			});
-			$('select').material_select();
+			this.initFields();
+		},
+		updated: function(){					
+			this.initFields();
 		}
 	}
 
