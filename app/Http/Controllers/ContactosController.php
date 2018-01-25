@@ -27,10 +27,7 @@ class ContactosController extends Controller
     public function store(ContactoRequest $request)
     {
         $contacto = new Contacto($request->all());      
-        foreach ($request->redes as $red) {
-            $redes[] = $red['tag'];
-        }
-        $contacto->influencers = ['video'=>$request->video,'redes'=>$redes];
+        $contacto->influencers = ['video'=>$request->video,'redes'=>$request->redes];
         if($contacto->save()){
             //Mail::to($user->email)->send(new ConfirmarCuenta($user));
             return response([],201);    

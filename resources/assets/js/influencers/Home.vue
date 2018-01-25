@@ -5,10 +5,8 @@
 			<div class="col s12 m6 center-align">				
 				<div class="video-container" @click="togglePlay">
 					<div class="video" id="video"></div>
-					<!--<iframe class="video" id="video" src="https://www.youtube.com/embed/yTZJqlH_VL0?rel=0&enablejsapi=1&html5=1&autoplay=1&controls=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
 				</div>	
-				<a v-if="play" style="font-size: 1.5em; cursor: pointer;" @click="togglePlay" class="girar">PAUSE</a>		
-				<a v-else style="font-size: 1.5em; cursor: pointer;" @click="togglePlay" class="girar">PLAY</a>	
+				<a style="font-size: 1.5em; cursor: pointer;" @click="togglePlay" class="girar">PLAY / PAUSE</a>		
 			</div>
 			<div class="col s12 m6">
 				<form class="col s12 formulario">
@@ -30,7 +28,7 @@
 							<label for="movil">Telefono movil *</label>
 						</div>
 						<div class="input-field col s6">
-							<input name="fecha_nacimiento" type="date" class="validate" v-model="form.fecha_nacimiento">
+							<input name="fecha_nacimiento" type="date" class="validate" v-model="form.fecha_nacimiento" placeholder="dd/mm/yyyy">
 							<label for="fecha_nacimiento" class="active">Fecha nacimiento *</label>
 						</div>
 						<div class="input-field col s6">
@@ -46,14 +44,18 @@
 							</select>
 							<label for="ciudad">Ciudad *</label>
 						</div>
-						<div class="input-field col s6">
+						<div class="input-field col s12 m4">
 							<input name="video" type="url" class="validate" v-model="form.video">
-							<label for="video">Copia y pega link video de youtube *</label>
+							<label for="video">Link video de youtube *</label>
 						</div>
-						<div class="input-field col s6">
-							<div class="chips chips-placeholder"></div>
-							<label class="active">Tus perfiles sociales</label>
-						</div>												
+						<div class="input-field col s12 m4">
+							<input name="facebook" type="text" class="validate" v-model="form.redes.facebook">
+							<label for="facebook">Tu perfil de facebook</label>
+						</div>		
+						<div class="input-field col s12 m4">
+							<input name="instagram" type="text" class="validate" v-model="form.redes.instagram">
+							<label for="instagram">Tu perfil de instagram</label>
+						</div>									
 					</div>
 					<div class="row">
 						<div class="terminos col s12">
@@ -97,7 +99,10 @@
 					fecha_nacimiento: '',
 					ciudad: '',
 					video: '',
-					redes: null
+					redes: {
+						facebook: '',
+						instagram: ''
+					}
 				}
 			}
 		},
@@ -169,7 +174,7 @@
 				}
 				return true;
 			},	
-			initFields: function(){
+			initFields: function(){				
 				$('.datepicker').pickadate({
 					selectMonths: true, 
 					selectYears: 15, 

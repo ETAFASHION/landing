@@ -59,20 +59,22 @@
 			</div>
 		</div>
 		<div class="row">
-			<transition name="fade">				
+			<transition name="fade">	
+				<keep-alive>			
 				<router-view></router-view>
-			</transition>
-		</div>
-		<div class="fixed-action-btn">
-			<a class="btn-floating btn-large red lighten-1">
-				<i class="large material-icons">people</i>
-			</a>
-			<ul>
-				<li><a class="btn-floating blue lighten-5" href="https://www.facebook.com/ETAFASHIONECUADOR/" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-				<li><a class="btn-floating blue lighten-5" href="https://www.instagram.com/etafashion_ec/?hl=es" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-			</ul>
-		</div>
-	</div>	
-	<script src="{{mix('js/influencers.js')}}"></script>
+			</keep-alive>
+		</transition>
+	</div>
+	<div class="fixed-action-btn">
+		<a class="btn-floating btn-large red lighten-1">
+			<i class="large material-icons">people</i>
+		</a>
+		<ul>
+			<li><a class="btn-floating blue lighten-5" href="https://www.facebook.com/ETAFASHIONECUADOR/" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+			<li><a class="btn-floating blue lighten-5" href="https://www.instagram.com/etafashion_ec/?hl=es" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+		</ul>
+	</div>
+</div>	
+<script src="{{mix('js/influencers.js')}}"></script>
 </body>
 </html>
