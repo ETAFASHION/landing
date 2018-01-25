@@ -45,7 +45,7 @@
 							<label for="ciudad">Ciudad *</label>
 						</div>
 						<div class="input-field col s12 m4">
-							<input name="video" type="url" class="validate" v-model="form.video">
+							<input name="video" type="text" class="validate" v-model="form.video">
 							<label for="video">Link video de youtube *</label>
 						</div>
 						<div class="input-field col s12 m4">
@@ -125,10 +125,7 @@
 			enviar: function(){
 				if(this.acepta){
 					if(this.validate()){					
-						let chips = $('.chips-placeholder').material_chip('data');
-						this.form.redes = chips;
 						let url = '/api/contactos';
-						console.log(JSON.stringify(this.form));
 						axios.post(url,this.form)
 						.then((response) => {			
 							console.log(response);
@@ -151,6 +148,7 @@
 				
 			},
 			validate: function(){
+				console.log(this.form);
 				if(this.form.nombres == ''){
 					return false;
 				}
@@ -182,10 +180,6 @@
 					clear: 'Clear',
 					close: 'Ok',
 					closeOnSelect: false 
-				});
-				$('.chips-placeholder').material_chip({
-					placeholder: 'Perfil de Facebook',
-					secondaryPlaceholder: 'Perfil de Instagram',
 				});
 				$('select').material_select();
 			}		
