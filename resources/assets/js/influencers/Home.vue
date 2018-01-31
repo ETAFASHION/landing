@@ -60,7 +60,10 @@
 						</div>
 					</div>
 				</form>				
-			</div>
+			</div>			
+		</div>
+		<div class="row" style="padding-top: 20px;">
+			<div class="col s12 center-align"><h4 class="title">Inscripciones hasta el 26 de febrero</h4></div>
 		</div>
 	</div>
 </template>
