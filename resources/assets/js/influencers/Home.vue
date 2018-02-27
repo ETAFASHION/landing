@@ -11,7 +11,10 @@
 
 			</div>
 			<div class="col s12 m6">
-				<form class="col s12 formulario">
+				<div class="row">
+					<div class="col s12 center-align"><h4 class="title">GRACIAS POR TU PARTICIPACIÓN, ESTAMOS VIENDO TODOS SUS VIDEOS</h4></div>
+				</div>
+				<!--<form class="col s12 formulario">
 					<div class="row">
 						<div class="input-field col s6">
 							<input name="nombres" type="text" class="validate" v-model="form.nombres">
@@ -59,12 +62,12 @@
 							</div>
 						</div>
 					</div>
-				</form>				
+				</form>-->				
 			</div>			
 		</div>
-		<div class="row" style="padding-top: 20px;">
+		<!--<div class="row" style="padding-top: 20px;">
 			<div class="col s12 center-align"><h4 class="title">Inscripciones hasta el 26 de febrero</h4></div>
-		</div>
+		</div>-->
 	</div>
 </template>
 
